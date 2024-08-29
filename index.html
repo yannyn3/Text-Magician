@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文本魔术师</title>
+    <title>Windows 文件名转换器</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="avatar"></div>
-        <h1>文本魔术师</h1>
-        <p class="subtitle">Text Magician</p>
-        <div class="button-container">
-            <button onclick="showContent('filename')" class="button green">文件名字转换</button>
-            <button onclick="showContent('fullwidth')" class="button gray">全/半角转换</button>
-        </div>
-        <div id="content">
-            <!-- 内容将通过 JavaScript 动态加载 -->
-        </div>
+    <h1>Windows 文件名转换器</h1>
+    <textarea id="input" placeholder="请在此输入需要转换的文件名，每行一个"></textarea>
+    <div class="button-group">
+        <button onclick="convertFileNames()">转换文件名</button>
+        <button onclick="copyOutput()">复制结果</button>
+        <button onclick="clearAll()">清空所有</button>
     </div>
+    <div id="output"></div>
+    <input type="text" id="tempInput">
+    <div id="notification"></div>
     <script src="script.js"></script>
 </body>
 </html>
