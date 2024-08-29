@@ -1,43 +1,73 @@
-function showContent(type) {
-    const contentDiv = document.getElementById('content');
-    if (type === 'filename') {
-        contentDiv.innerHTML = `
-            <h2>文件名字转换</h2>
-            <textarea id="input" placeholder="请输入需要转换的文件名，每行一个"></textarea>
-            <button onclick="convertFilename()" class="button green">转换</button>
-            <div id="result"></div>
-        `;
-    } else if (type === 'fullwidth') {
-        contentDiv.innerHTML = `
-            <h2>全/半角转换</h2>
-            <textarea id="input" placeholder="请输入需要转换的文本"></textarea>
-            <button onclick="convertToFullWidth()" class="button green">转为全角</button>
-            <button onclick="convertToHalfWidth()" class="button gray">转为半角</button>
-            <div id="result"></div>
-        `;
+const input = document.getElementById('input');
+const output = document.getElementById('output');
+const tempInput = document.getElementById('tempInput');
+const notification = document.getElementById('notification');
+const invalidCharsRegex = /[\\/:*?"<>|]/g;
+const trimDotsRegex = /^\.+|\.+$/g;
+
+function showNotification(message) {
+    notification.textContent = message;
+    notification.style.display = 'block';
+    notification.style.opacity = '1';
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 500);
+    }, 2000);
+}
+
+function convertFileNames() {
+    const fileNames = input.value.split('\n');
+    const convertedNames = fileNames.map(convertFileName);
+    output.textContent = convertedNames.join('\n');
+    showNotification('文件名已转换');
+}
+
+function convertFileName(fileName) {
+    fileName = fileName.replace(invalidCharsRegex, '_')
+                       .trim()
+                       .replace(trimDotsRegex, '');
+    
+    return fileName || '未命名文件';
+}
+
+function copyOutput() {
+    if (output.textContent) {
+        tempInput.value = output.textContent;
+        tempInput.select();
+        try {
+            document.execCommand('copy');
+            showNotification('已复制到剪贴板');
+        } catch (err) {
+            console.error('复制失败:', err);
+            showNotification('复制失败，请手动复制');
+        }
+        tempInput.blur();
+    } else {
+        showNotification('没有可复制的内容');
     }
 }
 
-function convertFilename() {
-    const input = document.getElementById('input').value;
-    const lines = input.split('\n');
-    const result = lines.map(line => {
-        return line.replace(/[^\w\s.-]/gi, '').replace(/\s+/g, '_');
-    }).join('\n');
-    document.getElementById('result').innerText = result;
+function clearAll() {
+    input.value = '';
+    output.textContent = '';
+    showNotification('已清空所有内容');
 }
 
-function convertToFullWidth() {
-    const input = document.getElementById('input').value;
-    const result = input.replace(/[A-Za-z0-9]/g, char => String.fromCharCode(char.charCodeAt(0) + 0xFEE0));
-    document.getElementById('result').innerText = result;
-}
-
-function convertToHalfWidth() {
-    const input = document.getElementById('input').value;
-    const result = input.replace(/[\uff01-\uff5e]/g, char => String.fromCharCode(char.charCodeAt(0) - 0xFEE0));
-    document.getElementById('result').innerText = result;
-}
-
-// 初始加载文件名转换界面
-showContent('filename');
+// 使用事件委托来处理按钮点击
+document.querySelector('.button-group').addEventListener('click', function(e) {
+    if (e.target.tagName === 'BUTTON') {
+        switch(e.target.textContent) {
+            case '转换文件名':
+                convertFileNames();
+                break;
+            case '复制结果':
+                copyOutput();
+                break;
+            case '清空所有':
+                clearAll();
+                break;
+        }
+    }
+});
