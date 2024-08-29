@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本魔术师</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="avatar"></div>
+        <h1>文本魔术师</h1>
+        <p class="subtitle">Text Magician</p>
+        <div class="button-container">
+            <button onclick="showContent('filename')" class="button green">文件名字转换</button>
+            <button onclick="showContent('fullwidth')" class="button gray">全/半角转换</button>
+        </div>
+        <div id="content">
+            <!-- 内容将通过 JavaScript 动态加载 -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
