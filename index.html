@@ -11,8 +11,8 @@
         <h1>文本魔术师</h1>
         <div class="subtitle">Text Magician</div>
         <div class="button-group">
-            <button onclick="showContent('filename')">文件名字转换</button>
-            <button onclick="showContent('fullwidth')">全/半角转换</button>
+            <button class="green-button" onclick="showContent('filename')">文件名字转换</button>
+            <button class="gray-button" onclick="showContent('fullwidth')">全/半角转换</button>
         </div>
     </div>
     <div id="content">
@@ -21,7 +21,7 @@
         <div class="button-group">
             <button id="convertBtn" onclick="convertText()">转换</button>
             <button onclick="copyOutput()">复制结果</button>
-            <button onclick="clearAll()">清空内容</button>
+            <button onclick="clearAll()">清空</button>
         </div>
         <div id="output"></div>
     </div>
