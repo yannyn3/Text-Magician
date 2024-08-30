@@ -25,7 +25,7 @@ function convertText() {
     if (currentConversionType === 'filename') {
         output.textContent = inputText.split('\n').map(convertFileName).join('\n');
     } else {
-        output.textContent = halfToFull(inputText);
+        output.textContent = inputText.split('\n').map(halfToFull).join('\n');
     }
     showNotification('转换完成');
 }
