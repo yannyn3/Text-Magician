@@ -58,6 +58,8 @@ h1 {
     transform: translate(-50%, -50%);
     width: 80%;
     max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 textarea {
     width: 100%;
@@ -68,12 +70,17 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+#outputContainer {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 #output {
     white-space: pre-wrap;
     background-color: #f2f2f2;
     padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
     text-align: left;
 }
 .notification {
@@ -86,38 +93,3 @@ textarea {
     border-radius: 5px;
     display: none;
 }
-
-/* ... 之前的样式保持不变 ... */
-
-#content {
-    display: none;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    color: #333;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow-y: auto;
-}
-
-#outputContainer {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-#output {
-    white-space: pre-wrap;
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: left;
-}
-
-/* ... 其他样式保持不变 ... */
