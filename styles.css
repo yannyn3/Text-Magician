@@ -1,56 +1,80 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #20B2AA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 20px;
 }
 
 .container {
     text-align: center;
-    margin-bottom: 20px;
+    color: white;
 }
 
-h1, .subtitle {
-    color: #333;
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 30px;
 }
 
 .button-group {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 button {
     padding: 10px 20px;
-    font-size: 16px;
-    margin: 0 10px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
+    font-size: 1em;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.green-button {
+    background-color: #9ACD32;
+    color: white;
+}
+
+.gray-button {
+    background-color: #A9A9A9;
+    color: white;
 }
 
 #content {
+    display: none;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
 }
 
 textarea {
     width: 100%;
     height: 150px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: vertical;
 }
 
 #output {
-    background-color: #f9f9f9;
+    white-space: pre-wrap;
+    background-color: #f2f2f2;
     padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 5px;
-    min-height: 100px;
+    margin-top: 10px;
 }
 
 .notification {
