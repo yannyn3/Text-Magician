@@ -93,3 +93,11 @@ textarea {
     border-radius: 5px;
     display: none;
 }
+
+#mainPage, #content {
+    display: none;
+}
+
+#mainPage {
+    display: block;
+}
