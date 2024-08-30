@@ -1,13 +1,14 @@
 const input = document.getElementById('input');
 const output = document.getElementById('output');
 const content = document.getElementById('content');
+const mainPage = document.getElementById('mainPage');
 const notification = document.getElementById('notification');
 const contentTitle = document.getElementById('contentTitle');
 const convertBtn = document.getElementById('convertBtn');
 let currentConversionType = '';
 
 function showContent(type) {
-    document.getElementById('mainPage').style.display = 'none';
+    mainPage.style.display = 'none';
     content.style.display = 'block';
     currentConversionType = type;
     if (type === 'filename') {
@@ -19,6 +20,13 @@ function showContent(type) {
         input.placeholder = "请输入需要转换的文本";
         convertBtn.textContent = "半角转全角";
     }
+}
+
+function returnToMain() {
+    mainPage.style.display = 'block';
+    content.style.display = 'none';
+    input.value = '';
+    output.textContent = '';
 }
 
 function convertText() {
@@ -66,18 +74,3 @@ function showNotification(message) {
         notification.style.display = 'none';
     }, 2000);
 }
-
-// 初始隐藏内容区域
-content.style.display = 'none';
-
-function returnToMain() {
-    document.getElementById('mainPage').style.display = 'block';
-    content.style.display = 'none';
-    input.value = '';
-    output.textContent = '';
-}
-
-// ... 其他函数保持不变 ...
-
-// 初始隐藏内容区域
-content.style.display = 'none';
