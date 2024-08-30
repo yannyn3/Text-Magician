@@ -3,27 +3,29 @@ const output = document.getElementById('output');
 const content = document.getElementById('content');
 const notification = document.getElementById('notification');
 const contentTitle = document.getElementById('contentTitle');
+const convertBtn = document.getElementById('convertBtn');
 let currentConversionType = '';
 
 function showContent(type) {
     content.style.display = 'block';
     currentConversionType = type;
     if (type === 'filename') {
-        contentTitle.textContent = '文件名转换器';
-        input.placeholder = "请输入需要转换的文件名，每行一个";
+        contentTitle.textContent = 'Windows 文件名转换器';
+        input.placeholder = "请在此输入需要转换的文件名，每行一个";
+        convertBtn.textContent = "转换文件名";
     } else {
         contentTitle.textContent = '半角全角转换器';
         input.placeholder = "请输入需要转换的文本";
+        convertBtn.textContent = "半角转全角";
     }
 }
 
-function convertText(conversionType) {
+function convertText() {
     const inputText = input.value;
     if (currentConversionType === 'filename') {
         output.textContent = inputText.split('\n').map(convertFileName).join('\n');
     } else {
-        output.textContent = conversionType === 'half-to-full' ? 
-            halfToFull(inputText) : fullToHalf(inputText);
+        output.textContent = halfToFull(inputText);
     }
     showNotification('转换完成');
 }
@@ -37,12 +39,6 @@ function convertFileName(fileName) {
 function halfToFull(text) {
     return text.replace(/[\u0000-\u00ff]/g, function(char) {
         return String.fromCharCode(char.charCodeAt(0) + 0xfee0);
-    });
-}
-
-function fullToHalf(text) {
-    return text.replace(/[\uff01-\uff5e]/g, function(char) {
-        return String.fromCharCode(char.charCodeAt(0) - 0xfee0);
     });
 }
 
@@ -70,6 +66,5 @@ function showNotification(message) {
     }, 2000);
 }
 
-function switchTheme() {
-    document.body.classList.toggle('dark-theme');
-}
+// 初始隐藏内容区域
+content.style.display = 'none';
