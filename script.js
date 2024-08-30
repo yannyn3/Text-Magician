@@ -1,7 +1,7 @@
+const mainPage = document.getElementById('mainPage');
+const content = document.getElementById('content');
 const input = document.getElementById('input');
 const output = document.getElementById('output');
-const content = document.getElementById('content');
-const mainPage = document.getElementById('mainPage');
 const notification = document.getElementById('notification');
 const contentTitle = document.getElementById('contentTitle');
 const convertBtn = document.getElementById('convertBtn');
@@ -27,6 +27,7 @@ function returnToMain() {
     content.style.display = 'none';
     input.value = '';
     output.textContent = '';
+    currentConversionType = '';
 }
 
 function convertText() {
@@ -74,3 +75,9 @@ function showNotification(message) {
         notification.style.display = 'none';
     }, 2000);
 }
+
+// 初始化页面
+document.addEventListener('DOMContentLoaded', function() {
+    mainPage.style.display = 'block';
+    content.style.display = 'none';
+});
