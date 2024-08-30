@@ -1,53 +1,51 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #20B2AA;
+    background-color: #2CCAAE;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
-
 .container {
     text-align: center;
     color: white;
 }
-
 h1 {
-    font-size: 2.5em;
+    font-size: 36px;
     margin-bottom: 10px;
 }
-
 .subtitle {
-    font-size: 1.2em;
+    font-size: 24px;
     margin-bottom: 30px;
 }
-
-.button-group {
+.button-container {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-
-button {
+.button {
     padding: 10px 20px;
-    font-size: 1em;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
-.green-button {
-    background-color: #9ACD32;
+.green {
+    background-color: #A0D468;
     color: white;
 }
-
-.gray-button {
-    background-color: #A9A9A9;
+.green:hover {
+    background-color: #8CC152;
+}
+.gray {
+    background-color: #AAB2BD;
     color: white;
 }
-
+.gray:hover {
+    background-color: #969BA5;
+}
 #content {
     display: none;
     background-color: white;
@@ -61,22 +59,23 @@ button {
     width: 80%;
     max-width: 600px;
 }
-
 textarea {
     width: 100%;
     height: 150px;
     margin-bottom: 10px;
     resize: vertical;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
-
 #output {
     white-space: pre-wrap;
     background-color: #f2f2f2;
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px;
+    text-align: left;
 }
-
 .notification {
     position: fixed;
     top: 20px;
