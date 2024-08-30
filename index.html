@@ -11,19 +11,17 @@
         <h1>文本魔术师</h1>
         <div class="subtitle">Text Magician</div>
         <div class="button-group">
-            <button class="green-button" onclick="showContent('filename')">文件名字转换</button>
-            <button class="gray-button" onclick="showContent('fullwidth')">全/半角转换</button>
+            <button onclick="showContent('filename')">文件名字转换</button>
+            <button onclick="showContent('fullwidth')">全/半角转换</button>
         </div>
     </div>
     <div id="content">
         <h2 id="contentTitle"></h2>
-        <button id="switchTheme" onclick="switchTheme()">切换主题</button>
         <textarea id="input" placeholder="请输入需要转换的文本"></textarea>
         <div class="button-group">
-            <button onclick="convertText('half-to-full')">半角转全角</button>
-            <button onclick="convertText('full-to-half')">全角转半角</button>
+            <button id="convertBtn" onclick="convertText()">转换</button>
+            <button onclick="copyOutput()">复制结果</button>
             <button onclick="clearAll()">清空内容</button>
-            <button onclick="copyOutput()">复制内容</button>
         </div>
         <div id="output"></div>
     </div>
