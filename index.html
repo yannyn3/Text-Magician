@@ -1,34 +1,64 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文本魔术师</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>文件名优化工具</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container" id="mainPage">
-        <h1>文本魔术师</h1>
-        <div class="subtitle">Text Magician</div>
-        <div class="button-container">
-            <button class="button green" onclick="showContent('filename')">文件名字转换</button>
-            <button class="button gray" onclick="showContent('fullwidth')">全/半角转换</button>
+    <div class="container">
+        <h1>文件名优化工具</h1>
+        
+        <div class="flex-container">
+            <div class="column">
+                <div class="textarea-wrapper">
+                    <div class="textarea-label">
+                        原始标题
+                        <span class="count-label" id="inputCount">0 行</span>
+                    </div>
+                    <textarea id="input" placeholder="请在此处粘贴需要处理的标题，每行一个标题"></textarea>
+                </div>
+            </div>
+            <div class="column">
+                <div class="textarea-wrapper">
+                    <div class="textarea-label">
+                        优化后的标题
+                        <span class="count-label" id="outputCount">0 行</span>
+                    </div>
+                    <textarea id="output" placeholder="此处显示优化后的结果" readonly></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button onclick="processAll()">一键优化</button>
+            <button onclick="copyResult()">复制结果</button>
+            <button class="clear" onclick="clearAll()">清空内容</button>
+        </div>
+
+        <div class="stats-container">
+            <span class="stat">总数：<span id="totalCount" class="stat-value">0</span></span>
+            <span class="stat">重复数：<span id="duplicateCount" class="stat-value">0</span></span>
+            <span class="stat">优化数：<span id="modifiedCount" class="stat-value">0</span></span>
+        </div>
+
+        <div class="log-section">
+            <div class="log-container">
+                <div class="log-header">
+                    <span class="log-title">修改日志</span>
+                </div>
+                <div id="log" class="log-area"></div>
+            </div>
+            <div class="log-container">
+                <div class="log-header">
+                    <span class="log-title">优化信息</span>
+                </div>
+                <div id="info" class="info-area"></div>
+            </div>
         </div>
     </div>
-    <div id="content" style="display: none;">
-        <h2 id="contentTitle"></h2>
-        <textarea id="input" placeholder="请输入需要转换的文本"></textarea>
-        <div class="button-container">
-            <button class="button green" id="convertBtn" onclick="convertText()">转换</button>
-            <button class="button green" onclick="copyOutput()">复制结果</button>
-            <button class="button green" onclick="clearAll()">清空内容</button>
-            <button class="button gray" onclick="returnToMain()">返回主页</button>
-        </div>
-        <div id="outputContainer">
-            <div id="output"></div>
-        </div>
-    </div>
-    <div id="notification" class="notification"></div>
-    <script src="script.js"></script>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
